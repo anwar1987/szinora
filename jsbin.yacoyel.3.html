@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by anwar1987 (http://jsbin.com/yacoyel/3/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet" type="text/css">
+  <title>szinora</title>
+<style id="jsbin-css">
+html,body{
+    height: 100%;
+}
+
+#szoveg{
+ background-color:ivory;
+}
+#clock{
+  text-align:center;
+  position:relative;
+  top:30%;
+  font-family: 'Cormorant Garamond', serif;
+  font-size:300%;
+  margin-top: -40px;
+  background-color: ivory;
+}
+</style>
+</head>
+<body>
+ <div id="szoveg">Ez egy általam készített színóra, amelyet csupán gyakorlási célból hoztam létre. Az eredeti megoldás alapján ugyan, de magamtól, lehetőleg keveset "puskázva" és minnél inkább egyedire tervezve. Az óra bizonyos időközönként megváltoztatja a háttészínt az oldalon.</div>
+<div id="clock">12:13:14</div>
+<script id="jsbin-javascript">
+function szinOra(){
+var ido = new Date();
+var ora = ido.getHours();
+var perc = ido.getMinutes();
+var masodperc = ido.getSeconds();
+if (ora < 10){
+  ora = '0' + ora;
+}
+if (perc < 10){
+  perc = '0' + perc;
+}
+if (masodperc < 10){
+  masodperc = '0'+masodperc;
+}
+var ido = ora + ':' + perc + ':' + masodperc;
+   var hexColor = '#' + perc + ora + masodperc;
+document.getElementById('clock').innerHTML = ido;
+    document.body.style.background = hexColor;
+setTimeout(function(){
+  szinOra();
+ }, 1000);
+}
+szinOra();
+</script>
+</body>
+</html>
